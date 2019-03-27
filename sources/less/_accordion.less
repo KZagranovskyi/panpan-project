@@ -1,0 +1,62 @@
+/*==================   Accordion    ======================*/
+.accordion {
+  @media (max-width: 991px) {
+    max-width: 352px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
+}
+
+.accordion_header {
+  color: @brand-success-variant-1;
+  .transition(all .3s ease);
+  @media (max-width: 991px) {
+    font-size: 14px;
+  }
+  &:hover{
+    color: @default-dark;
+  }
+  &:focus{
+    outline: none;
+  }
+}
+
+.accordion_cnt {
+  padding-left: 20px;
+  margin-top: 10px;
+  @media (min-width: @screen-md-min) {
+    margin-top: (17/@base-text-size)*1rem;
+    padding-left: (43/@base-text-size)*1rem;
+  }
+}
+
+.ui-accordion-header {
+  position: relative;
+  cursor: pointer;
+  padding-left: 20px;
+  @media (min-width: @screen-md-min) {
+    padding-left: (43/@base-text-size)*1rem;
+  }
+  &:after {
+    position: absolute;
+    top: 50%;
+    left: -(7/@base-text-size)*1rem;
+    content: '\e5cf ';
+    color: @brand-success-variant-1;
+    font-size: (30/@base-text-size)*1rem;
+    line-height: (30/@base-text-size)*1rem;
+    font-weight: 400;
+    font-family: 'Material Icons';
+    .transform(translateY(-50%));
+    .transition(all .3s ease);
+  }
+
+  &-active:after {
+    .transform(translateY(-50%)  rotate(180deg));
+  }
+
+  * + &{
+    margin-top: (13.5/@base-text-size)*1rem;
+  }
+}

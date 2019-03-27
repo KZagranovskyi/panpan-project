@@ -1,0 +1,346 @@
+//
+// Navbars
+// --------------------------------------------------
+
+
+// Wrapper and base class
+//
+// Provide a static navbar from which we expand to create full-width, fixed, and
+// other navbar variations.
+
+.navbar {
+  position: relative;
+  min-height: 47px; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
+  margin-bottom: 0;
+
+  // Prevent floats from breaking the navbar
+  &:extend(.clearfix all);
+
+  @media (min-width: @grid-float-breakpoint) {
+    border-radius: 0;
+  }
+}
+
+
+//
+// Navbar alignment options
+//
+// Display the navbar across the entirety of the page or fixed it to the top or
+// bottom of the page.
+
+// Static top (unfixed, but 100% wide) navbar
+.navbar-static-top {
+  z-index: @zindex-navbar;
+  // border-width: 0 0 1px;
+
+  @media (min-width: @grid-float-breakpoint) {
+    border-radius: 0;
+  }
+}
+
+// Fix the top/bottom navbars when screen real estate supports it
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: @zindex-navbar-fixed;
+
+  // Undo the rounded corners
+  @media (min-width: @grid-float-breakpoint) {
+    border-radius: 0;
+  }
+}
+.navbar-fixed-top {
+  top: 0;
+  border-width: 0 0 1px;
+}
+.navbar-fixed-bottom {
+  bottom: 0;
+  margin-bottom: 0; // override .navbar defaults
+  border-width: 1px 0 0;
+}
+
+
+
+
+// Navbar heading
+//
+// Groups `.navbar-brand` and `.navbar-toggle` into a single component for easy
+// styling of responsive aspects.
+
+.navbar-header {
+  &:extend(.clearfix all);
+  position: relative;
+  z-index: 9999;
+
+  @media (min-width: @grid-float-breakpoint) {
+    float: left;
+  }
+}
+
+
+// Brand/project name
+
+.navbar-brand {
+  &__icon{
+    font-size: 50px;
+    position: relative;
+    left: 7px;
+    top: 15px;
+    margin-right: 12px;
+    margin-left: -15px;
+
+    @media (min-width: 2051px) {
+      font-size: (50/@base-text-size)*1rem;
+      left: (7/@base-text-size)*1rem;
+      top: (15/@base-text-size)*1rem;
+      margin-right: (12/@base-text-size)*1rem;
+      margin-left: -(15/@base-text-size)*1rem;
+    }
+  }
+  a{
+    &:hover,
+    &:focus {
+      color: @white-clr;
+      text-decoration: none;    
+    }
+  }
+}
+
+
+
+
+// Navbar nav links
+//
+// Builds on top of the `.nav` components with its own modifier class to make
+// the nav the full height of the horizontal nav (above 768px).
+
+.navbar-nav {
+&:extend(.clearfix all);
+
+  // Uncollapse the nav
+  @media (min-width: @grid-float-breakpoint) {
+    margin: 0;
+    font-family: @font-family-base;
+    font-size: (@navbar-font-size/@base-text-size)*1rem;
+    line-height: (@navbar-lh-size/@base-text-size)*1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: 38px;
+    @media (min-width: @screen-xl-min) {
+      margin-top: (34/@base-text-size)*1rem;
+    }
+
+    > li {
+      float: left;
+      
+      &:last-child{
+        margin-right: (17/@base-text-size)*1rem;
+      }
+      > a {
+        display: block;
+        position: relative;
+
+        @media (max-width: @grid-float-breakpoint-max){
+          font-style: italic;
+        }
+
+        &:hover{
+          
+        }          
+      }
+      &.active > a, 
+      &.sfHover > a{
+        
+        }
+
+      & + li{
+        margin-left: 30px;
+        @media (min-width: @screen-md-min) {
+          margin-left: (49/@base-text-size)*1rem;
+        }
+      }
+
+    }
+  }
+}
+
+
+
+// Component alignment
+//
+// Repurpose the pull utilities as their own navbar utilities to avoid specificity
+// issues with parents and chaining. Only do this when the navbar is uncollapsed
+// though so that navbar contents properly stack and align in mobile.
+//
+// Declared after the navbar components to ensure more specificity on the margins.
+
+@media (min-width: @grid-float-breakpoint) {
+  .navbar-left  { .pull-left(); }
+  .navbar-right {
+    .pull-right();
+    // margin-right: -@navbar-padding-horizontal;
+    margin-right: 0;
+
+    ~ .navbar-right {
+      margin-right: 0;
+    }
+  }
+}
+
+
+// Alternate navbars
+// --------------------------------------------------
+
+// Default navbar
+.navbar-default {
+
+  border-color: @navbar-default-border;
+  
+
+  .navbar-brand {
+    color: @white-clr;
+    &:hover,
+    &:focus {
+      color: @white-clr;
+      background-color: @navbar-default-brand-hover-bg;
+    }
+  }
+
+  .navbar-nav {
+    > li > a {
+      color: @navbar-default-link-color;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1;
+      font-weight: 400;
+      text-transform: uppercase;
+      font-size: 16px;
+      position: relative;
+      -webkit-transition: color 0.3s;
+      transition: color 0.3s;
+      letter-spacing: -0.01em;
+      @media (min-width: 2051px) {
+        font-size: (16/@base-text-size)*1rem;
+      }
+
+      &:before{
+        content: '';
+        position: absolute;
+        background: #fff;
+        -webkit-transition: -webkit-transform 0.3s;
+        transition: transform 0.3s;
+        -webkit-transition-timing-function: cubic-bezier(0.44, 0.05, 0.55, 0.95);
+        transition-timing-function: cubic-bezier(0.44, 0.05, 0.55, 0.95);
+        left: 0;
+        width: 100%;
+        height: 3px;
+        -webkit-transform: scale3d(0, 0.1, 1);
+        transform: scale3d(0, 0.1, 1);
+        bottom: -27px;
+        @media (min-width: 2051px) {
+          bottom: -(28/@base-text-size)*1rem;
+          height: (3/@base-text-size)*1rem;
+        }
+      }
+
+      &:hover {
+        color: #fff;
+        &:before {
+          -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+        }
+      }
+      &:focus{
+        color: @navbar-default-link-color;
+      }
+
+      &:hover{
+        color: @navbar-default-link-hover-color;
+        background-color: @navbar-default-link-hover-bg;
+      }
+    }
+    > .active > a, 
+    > .sfHover > a{
+      &,
+      &:hover,
+      &:focus {
+        &:before {
+          -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+        }
+        color: @navbar-default-link-active-color;
+        background-color: @navbar-default-link-active-bg;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-default-link-disabled-color;
+        background-color: @navbar-default-link-disabled-bg;
+
+      }
+    }
+  }  
+}
+
+// Inverse navbar
+
+.navbar-inverse {
+  background-color: @navbar-inverse-bg;
+  border-color: @navbar-inverse-border;
+
+  .navbar-brand {
+    color: @navbar-inverse-brand-color;
+    &:hover,
+    &:focus {
+      color: @navbar-inverse-brand-hover-color;
+      background-color: @navbar-inverse-brand-hover-bg;
+    }
+  }
+
+  .navbar-text {
+    color: @navbar-inverse-color;
+  }
+
+  .navbar-nav {
+    > li > a {
+      color: @navbar-inverse-link-color;
+
+      &:hover,
+      &:focus {
+        color: @navbar-inverse-link-hover-color;
+        background-color: @navbar-inverse-link-hover-bg;
+      }
+    }
+    > .active > a,
+    > .sfHover > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-inverse-link-active-color;
+        background-color: @navbar-inverse-link-active-bg;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-inverse-link-disabled-color;
+        background-color: @navbar-inverse-link-disabled-bg;
+      }
+    }
+  }
+}
+
+
+// ------------------------------------
+// To show only _navbar 
+//-------------------------------------
+@media (max-width: 767px) {
+  .navbar-nav {
+    display: none;
+  }
+}

@@ -1,0 +1,98 @@
+/* Mail Form Validation
+  ========================================================*/
+
+.mfValidation {
+  .transition(.3s all ease);
+  position: absolute;
+  font-weight: 300;
+  font-size: (12/@base-text-size)*1rem;
+  opacity: 0;
+  visibility: hidden;
+  cursor: pointer;
+  z-index: 998;
+  &:before {
+    content: '';
+    position: absolute;
+
+  }
+  &:hover {
+    &:before {
+    }
+  }
+
+  &.error {
+    .transform(scale(1));
+    opacity: 1;
+    visibility: visible;
+    .animation(notifanim .4s cubic-bezier(.55, 0, .1, 1) forwards);
+  }
+
+    text-align: right;
+    top: (4/@base-text-size)*1rem;
+    left: auto;
+    bottom: 100%;
+    right: (15/@base-text-size)*1rem;
+    background: none;
+    padding: 0;
+    margin: 0 0 ((3/@base-text-size)*1rem);
+    min-height: 0;
+    color: #FF0000;
+    .box-shadow(none);
+    &:before {
+      display: none;
+    }
+
+    &:hover{
+      cursor: text;
+      background: none;
+
+    }
+}
+
+.keyframes(notifanim-fo) {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+
+  20% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  99% {
+    visibility: hidden;
+  }
+
+  100% {
+    visibility: hidden;
+    transform: scale(.3);
+    opacity: 0;
+  }
+}
+
+.keyframes(notifanim) {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(.3);
+  }
+
+  1% {
+    visibility: visible;
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  75% {
+    transform: scale(.9);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

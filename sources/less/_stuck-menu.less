@@ -1,0 +1,39 @@
+/*==================  Stuck menu  ======================*/
+@stuck-bg: @brand-success;
+@stuck-bc: #555;
+
+.stuck_container {
+}
+
+.isStuck {
+  z-index: 9999;
+  box-shadow: 4px ((2/@base-text-size)*1rem) 4px fade(@white-clr, 50%);
+  .background (@stuck-bg, 1);
+
+  min-height: 75px;
+
+  @media (min-width: 2051px) {
+    min-height: (75/@base-text-size)*1rem;
+  }
+  .navbar-nav{
+    margin-top: 32px;
+
+    @media (min-width: 2050px) {
+      margin-top: (32/@base-text-size)*1rem;
+    }
+
+    .navbar-brand{
+      line-height: 36px;
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .isStuck {
+    display: none !important;
+  }
+}
+
+.isStuck .sf-menu > ul{
+	top: (70/@base-text-size)*1rem;
+}
