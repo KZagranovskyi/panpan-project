@@ -219,7 +219,7 @@
 
                         <div class="h5 offset-5 big-line-height">Compare to other insurance services. It could help you
                             save time and money and get a more appropriate policy.</div>
-                        <input autofocus="true" id="Deposit" max="100000" min="1" type="number" />
+                       Deposit  :<input autofocus="true" id="Deposit" max="100000" min="1" type="number" value="2000" />
 
                         <table>
                             <tbody>
@@ -230,7 +230,7 @@
                             </tr>
                             <tr style="height: 50px;">
                                 <td><a href="#">PanPan Insurance BV</a></td>
-                                <td style="text-align:center"><label id="pan-pan" style="font-weight: bold">0</label></td>
+                                <td style="text-align:center"><label id="panpan" style="font-weight: bold">0</label></td>
                                 <td>5%, but not less than €50 per damage.</td>
                             </tr>
                             <tr style="height: 50px;">
@@ -539,6 +539,8 @@
         if (deposit <= 2200){  portoSecuro = deposit*0.0828;}
         if (deposit > 2200){   portoSecuro = deposit*0.0713;}
 
+        var panpan = deposit/12;
+
 
         if (yachtPool == -1){
             document.getElementById('yacht-pool').innerText='-';
@@ -555,9 +557,11 @@
         }
         document.getElementById('mastundschotbruch').innerText=Math.round(uniqa)+' €';
         document.getElementById('portosecuro').innerText=Math.round(portoSecuro)+' €';
+        document.getElementById('panpan').innerText=Math.round(panpan)+' €';
         document.getElementById('topsail').innerText= "No data";
 
     }
+    Calculate()
 </script>
 <!-- </script> -->
 </body>
