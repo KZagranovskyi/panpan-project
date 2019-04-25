@@ -168,9 +168,9 @@
                             <div class="form-group">
                                 <label class="form-label" data-add-placeholder for="mailform-input-name">* Your full name here:</label>
                                 <input id="mailform-input-name"
-                                       type="text"
+                                       type="number"
                                        name="name"
-                                       data-constraints="@NotEmpty @LettersOnly"/>
+                                       data-constraints="@NotEmpty @NumbersOnly"/>
 
                             </div>
 
@@ -184,11 +184,11 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label" data-add-placeholder for="mailform-input-phone">Your telephone here:</label>
+                                <label class="form-label" data-add-placeholder for="mailform-input-phone">Your deposit:</label>
                                 <input id="mailform-input-phone"
-                                       type="text"
+                                       type="number"
                                        name="phone"
-                                       data-constraints="@Phone"/>
+                                       data-constraints="@NumbersOnly"/>
 
                             </div>
 

@@ -22,6 +22,7 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/rd-mailform.css"/>
 
     <!-- Links -->
 
@@ -219,55 +220,79 @@
 
                         <div class="h5 offset-5 big-line-height">Compare to other insurance services. It could help you
                             save time and money and get a more appropriate policy.</div>
-                       Deposit  :<input autofocus="true" id="Deposit" max="100000" min="1" type="number" value="2000" />
-
-                        <table>
-                            <tbody>
-                            <tr>
-                                <th style="width: 30%;">Company</th>
-                                <th style="width: 30%;">Price</th>
-                                <th style="width: 40%;">Own risk</th>
-                            </tr>
-                            <tr style="height: 50px;">
-                                <td><a href="#">PanPan Insurance BV</a></td>
-                                <td style="text-align:center"><label id="panpan" style="font-weight: bold">0</label></td>
-                                <td>5%, but not less than €50 per damage.</td>
-                            </tr>
-                            <tr style="height: 50px;">
-                                <td><a href="#">Yacht-Pool International</a></td>
-                                <td style="text-align:center"><label id="yacht-pool" style="font-weight: bold">0</label></td>
-                                <td>5%, but not less than €50 per damage.</td>
-                            </tr>
-                            <tr style="height: 50px;">
-                                <td><a href="#">European insurance services</a></td>
-                                <td style="text-align:center"><label id="eis" style="font-weight: bold">0</label></td>
-                                <td>10%, but not less than €100 per damage.</td>
-                            </tr>
-                            <tr style="height: 50px;">
-                                <td><a href="#">Hamburger Yachtversicherung Schomacker</a></td>
-                                <td style="text-align:center"><label id="schomacker" style="font-weight: bold">0</label></td>
-                                <td>No own risk.</td>
-                            </tr>
-                            <tr style="height: 50px;">
-                                <td><a href="#">Pantaenius</a></td>
-                                <td style="text-align:center"><label id="pantaenius" style="font-weight: bold">0</label></td>
-                                <td>€100 per loss-event.</td>
-                            </tr>
-                            <tr style="height: 50px;">
-                                <td><a href="#">Uniqa</a></td>
-                                <td style="text-align:center"><label id="mastundschotbruch" style="font-weight: bold">0</label></td>
-                                <td>10%, but not less than €100 per damage.</td>
-                            </tr>
-                            <tr style="height: 50px;">
-                                <td><a href="#">PortoSecuro</a></td>
-                                <td style="text-align:center"><label id="portosecuro" style="font-weight: bold">0</label></td>
-                                <td>€70 per loss-event.</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <a  onclick="Calculate();" class="btn btn-md btn-success">Calculate Premium</a>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-offset-4 col-sm-12 col-lg-8">
+                        <form class='rd-mailform' method="post" action="bat/rd-mailform.php">
+                            <div class="form-group">
+                                <label class="form-label" data-add-placeholder for="Deposit">Your deposit:</label>
+                                <input  id="Deposit" max="100000" min="1" type="number"
+                                            name="deposit"
+                                            data-constraints="@NotEmpty @NumbersOnly"
+                                style="background-color: white;"/>
+                            </div>
+                            <a  onclick="Calculate();" class="btn btn-md btn-success" style="    margin-left: 20px;">
+                                Calculate Premium</a>
+                            <!--<div class="form-group btn-wr text-center text-md-left">-->
+                                <!--<button class="btn btn-success" type="submit">Submit</button>-->
+
+                            <!--</div>-->
+                        </form>
+                    </div>
+                </div>
+                        <div class="row">
+                            <div class="col-lg-offset-2 col-sm-12 col-lg-8">
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <th style="width: 30%; text-align: center;">Company</th>
+                                        <th style="width: 30%; text-align: center;">Price</th>
+                                        <th style="width: 40%; text-align: center;">Own risk</th>
+                                    </tr>
+                                    <tr style="height: 50px;width: 30%;">
+                                        <td><H5><a href="#">PanPan Insurance BV</a></H5></td>
+                                        <td style="text-align:center"><label id="panpan" style=" color: #87d76b;" class="h4 big">0</label></td>
+                                        <td class="h5 text-success">5%, but not less than €50 per damage.</td>
+                                    </tr>
+                                    <tr style="height: 50px;">
+                                        <td><a href="#">Yacht-Pool International</a></td>
+                                        <td style="text-align:center"><span id="yacht-pool" >0</span></td>
+                                        <td>5%, but not less than €50 per damage.</td>
+                                    </tr>
+                                    <tr style="height: 50px;">
+                                        <td><a href="#">European insurance services</a></td>
+                                        <td style="text-align:center"><span id="eis" >0</span></td>
+                                        <td>10%, but not less than €100 per damage.</td>
+                                    </tr>
+                                    <tr style="height: 50px;">
+                                        <td><a href="#">Hamburger Yachtversicherung Schomacker</a></td>
+                                        <td style="text-align:center"><span id="schomacker" >0</span></td>
+                                        <td>No own risk.</td>
+                                    </tr>
+                                    <tr style="height: 50px;">
+                                        <td><a href="#">Pantaenius</a></td>
+                                        <td style="text-align:center"><span id="pantaenius" >0</span></td>
+                                        <td>€100 per loss-event.</td>
+                                    </tr>
+                                    <tr style="height: 50px;">
+                                        <td><a href="#">Uniqa</a></td>
+                                        <td style="text-align:center"><span id="mastundschotbruch" >0</span></td>
+                                        <td>10%, but not less than €100 per damage.</td>
+                                    </tr>
+                                    <tr style="height: 50px;">
+                                        <td><a href="#">PortoSecuro</a></td>
+                                        <td style="text-align:center"><span id="portosecuro" >0</span></td>
+                                        <td>€70 per loss-event.</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+
+
             </div>
         </section>
         <!-- END Having trouble deciding?-->
@@ -539,7 +564,7 @@
         if (deposit <= 2200){  portoSecuro = deposit*0.0828;}
         if (deposit > 2200){   portoSecuro = deposit*0.0713;}
 
-        var panpan = deposit/12;
+        var panpan = deposit/18;
 
 
         if (yachtPool == -1){
@@ -558,10 +583,9 @@
         document.getElementById('mastundschotbruch').innerText=Math.round(uniqa)+' €';
         document.getElementById('portosecuro').innerText=Math.round(portoSecuro)+' €';
         document.getElementById('panpan').innerText=Math.round(panpan)+' €';
-        document.getElementById('topsail').innerText= "No data";
+
 
     }
-    Calculate()
 </script>
 <!-- </script> -->
 </body>
